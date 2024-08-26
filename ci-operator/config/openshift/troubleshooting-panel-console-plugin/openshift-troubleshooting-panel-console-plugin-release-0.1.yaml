@@ -5,15 +5,14 @@ build_root:
     tag: golang-1.13
 images:
 - dockerfile_path: Dockerfile
-  to: distributed-tracing-console-plugin
+  to: troubleshooting-panel-console-plugin
 - dockerfile_path: Dockerfile.test
-  to: distributed-tracing-console-plugin-test
+  to: troubleshooting-panel-console-plugin-test
 promotion:
   to:
   - excluded_images:
-    - distributed-tracing-console-plugin
-    - distributed-tracing-console-plugin-test
-    name: "latest"
+    - troubleshooting-panel-console-plugin-test
+    name: "0.1"
     namespace: observability-ui
 resources:
   '*':
@@ -26,8 +25,8 @@ tests:
 - as: lint
   commands: make lint-frontend
   container:
-    from: distributed-tracing-console-plugin-test
+    from: troubleshooting-panel-console-plugin-test
 zz_generated_metadata:
   branch: main
   org: openshift
-  repo: distributed-tracing-console-plugin
+  repo: troubleshooting-panel-console-plugin

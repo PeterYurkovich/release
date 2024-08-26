@@ -11,9 +11,8 @@ images:
 promotion:
   to:
   - excluded_images:
-    - distributed-tracing-console-plugin
     - distributed-tracing-console-plugin-test
-    name: "latest"
+    name: "0.2"
     namespace: observability-ui
 resources:
   '*':

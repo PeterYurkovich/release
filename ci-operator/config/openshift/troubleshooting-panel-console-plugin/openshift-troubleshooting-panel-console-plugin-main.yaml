@@ -11,8 +11,9 @@ images:
 promotion:
   to:
   - excluded_images:
+    - troubleshooting-panel-console-plugin
     - troubleshooting-panel-console-plugin-test
-    name: "0.1"
+    name: "latest"
     namespace: observability-ui
 resources:
   '*':
