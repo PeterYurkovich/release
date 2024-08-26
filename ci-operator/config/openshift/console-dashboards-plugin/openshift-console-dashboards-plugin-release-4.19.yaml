@@ -6,6 +6,8 @@ build_root:
 images:
 - dockerfile_path: Dockerfile.test
   to: console-dashboards-plugin-test
+- dockerfile_path: Dockerfile
+  to: console-dashboard-plugin
 promotion:
   to:
   - excluded_images:
@@ -23,7 +25,7 @@ releases:
       name: "4.19"
       namespace: ocp
 resources:
-  '*':
+  "*":
     limits:
       memory: 4Gi
     requests:
@@ -34,6 +36,12 @@ tests:
   commands: make lint-frontend
   container:
     from: console-dashboards-plugin-test
+- as: fips-image-scan-operator
+  steps:
+    dependencies:
+      SCAN_IMAGE: console-dashboard-plugins
+    test:
+      - ref: fips-check-image-scan
 zz_generated_metadata:
   branch: release-4.19
   org: openshift
